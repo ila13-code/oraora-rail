@@ -1,6 +1,7 @@
 # OraOra Rail – Train Timetable Visualizer
 
 Visualizza le tratte e gli orari dei **treni regionali Trenitalia in Sardegna**.
+
 Il progetto è stato sviluppato per il corso di Automated Planning A.A. 2024/2025.
 
 ---
