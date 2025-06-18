@@ -1,12 +1,7 @@
 #!/usr/bin/env python3
 """
-preprocess_gtfs.py
-──────────────────
-Estrae e processa i dati GTFS Trenitalia completi per creare una visualizzazione
-interattiva delle linee ferroviarie con animazioni dei treni in tempo reale.
-
 Usage:
-    python preprocess_gtfs.py <in_dir> <out_dir>
+    python preprocess.py <in_dir> <out_dir>
 """
 import json
 import sys
