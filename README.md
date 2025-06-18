@@ -38,11 +38,3 @@ $ python preprocess.py resources out
 # 5. Avvia un server statico (ad esempio)
 $ python -m http.server 8000
 ```
-
-
-* [ ] Pannello filtri avanzato (tipologia, fascia oraria)
-* [ ] Deploy su GitHub Pages / Vercel
-
----
-
-*Progetto sviluppato da ilaria & team, a.a. 2024‑2025.*
