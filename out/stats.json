@@ -1,0 +1,45 @@
+{
+  "total_routes":1,
+  "total_trips":431,
+  "total_stops":41,
+  "total_shapes":431,
+  "generated_at":"2025-06-18T22:52:34.827723",
+  "destinations":{
+    "DECIMOMANNU":23,
+    "CAGLIARI":142,
+    "OZIERI CHILIVANI":15,
+    "Olbia Terranova":22,
+    "OLBIA":21,
+    "SASSARI":54,
+    "PORTO TORRES MARITTIMA":13,
+    "ORISTANO":22,
+    "S.GAVINO":13,
+    "MACOMER":13,
+    "Carbonia Serbariu":36,
+    "VILLAMASSARGIA DOMUSNOVAS":27,
+    "IGLESIAS":24,
+    "GOLFO ARANCI":6
+  },
+  "routes_summary":{
+    "10083":{
+      "trip_count":431,
+      "stops_served":41,
+      "destinations":[
+        "OZIERI CHILIVANI",
+        "ORISTANO",
+        "DECIMOMANNU",
+        "SASSARI",
+        "PORTO TORRES MARITTIMA",
+        "Olbia Terranova",
+        "OLBIA",
+        "VILLAMASSARGIA DOMUSNOVAS",
+        "MACOMER",
+        "Carbonia Serbariu",
+        "GOLFO ARANCI",
+        "CAGLIARI",
+        "IGLESIAS",
+        "S.GAVINO"
+      ]
+    }
+  }
+}

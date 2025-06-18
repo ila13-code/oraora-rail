@@ -1,0 +1,248 @@
+{
+  "830012810":{
+    "name":"CAGLIARI S.GILLA",
+    "lat":39.22779,
+    "lon":9.096391,
+    "full_name":"Stazione di CAGLIARI S.GILLA"
+  },
+  "830012816":{
+    "name":"PLOAGHE",
+    "lat":40.661322,
+    "lon":8.72808,
+    "full_name":"Stazione di PLOAGHE"
+  },
+  "830012852":{
+    "name":"GOLFO ARANCI",
+    "lat":40.994716,
+    "lon":9.627688,
+    "full_name":"Stazione di GOLFO ARANCI"
+  },
+  "830012891":{
+    "name":"CAGLIARI",
+    "lat":39.216084,
+    "lon":9.107992,
+    "full_name":"Stazione di CAGLIARI"
+  },
+  "830012895":{
+    "name":"RUDALZA (GOLFO ARANCI)",
+    "lat":40.994089,
+    "lon":9.531225,
+    "full_name":"Stazione di RUDALZA (GOLFO ARANCI)"
+  },
+  "830012896":{
+    "name":"SU CANALE (MONTI)",
+    "lat":40.838383,
+    "lon":9.404229,
+    "full_name":"Stazione di SU CANALE (MONTI)"
+  },
+  "830012950":{
+    "name":"IGLESIAS",
+    "lat":39.310571,
+    "lon":8.539796,
+    "full_name":"Stazione di IGLESIAS"
+  },
+  "830012818":{
+    "name":"PORTO TORRES MARITTIMA",
+    "lat":40.837917,
+    "lon":8.397302,
+    "full_name":"Stazione di PORTO TORRES MARITTIMA"
+  },
+  "830012807":{
+    "name":"SASSARI",
+    "lat":40.729515,
+    "lon":8.554162,
+    "full_name":"Stazione di SASSARI"
+  },
+  "830012902":{
+    "name":"Olbia Terranova",
+    "lat":40.92238,
+    "lon":9.49458,
+    "full_name":"Stazione di Olbia Terranova"
+  },
+  "830012954":{
+    "name":"SILIQUA",
+    "lat":39.297006,
+    "lon":8.813079,
+    "full_name":"Stazione di SILIQUA"
+  },
+  "830012956":{
+    "name":"VILLASPECIOSA UTA",
+    "lat":39.30417,
+    "lon":8.940507,
+    "full_name":"Stazione di VILLASPECIOSA UTA"
+  },
+  "830013703":{
+    "name":"Carbonia Serbariu",
+    "lat":39.163526,
+    "lon":8.513212,
+    "full_name":"Stazione di Carbonia Serbariu"
+  },
+  "830012859":{
+    "name":"BERCHIDDA",
+    "lat":40.772052,
+    "lon":9.181317,
+    "full_name":"Stazione di BERCHIDDA"
+  },
+  "830012866":{
+    "name":"GIAVE",
+    "lat":40.455878,
+    "lon":8.72939,
+    "full_name":"Stazione di GIAVE"
+  },
+  "830012867":{
+    "name":"BONORVA",
+    "lat":40.417767,
+    "lon":8.760714,
+    "full_name":"Stazione di BONORVA"
+  },
+  "830012857":{
+    "name":"MONTI TELTI",
+    "lat":40.829635,
+    "lon":9.322818,
+    "full_name":"Stazione di MONTI TELTI"
+  },
+  "830012860":{
+    "name":"OSCHIRI",
+    "lat":40.713274,
+    "lon":9.107759,
+    "full_name":"Stazione di OSCHIRI"
+  },
+  "830012872":{
+    "name":"BORORE",
+    "lat":40.218998,
+    "lon":8.809539,
+    "full_name":"Stazione di BORORE"
+  },
+  "830012869":{
+    "name":"MACOMER",
+    "lat":40.267906,
+    "lon":8.772281,
+    "full_name":"Stazione di MACOMER"
+  },
+  "830012885":{
+    "name":"SAMASSI SERRENTI",
+    "lat":39.48308,
+    "lon":8.899043,
+    "full_name":"Stazione di SAMASSI SERRENTI"
+  },
+  "830012888":{
+    "name":"DECIMOMANNU",
+    "lat":39.304598,
+    "lon":8.965811,
+    "full_name":"Stazione di DECIMOMANNU"
+  },
+  "830012886":{
+    "name":"SERRAMANNA NURAMINIS",
+    "lat":39.426129,
+    "lon":8.916582,
+    "full_name":"Stazione di SERRAMANNA NURAMINIS"
+  },
+  "830012952":{
+    "name":"VILLAMASSARGIA DOMUSNOVAS",
+    "lat":39.294813,
+    "lon":8.641988,
+    "full_name":"Stazione di VILLAMASSARGIA DOMUSNOVAS"
+  },
+  "830012887":{
+    "name":"VILLASOR",
+    "lat":39.381454,
+    "lon":8.935909,
+    "full_name":"Stazione di VILLASOR"
+  },
+  "830012819":{
+    "name":"Elmas Aeroporto",
+    "lat":39.257262,
+    "lon":9.062786,
+    "full_name":"Stazione di Elmas Aeroporto"
+  },
+  "830012890":{
+    "name":"CAGLIARI ELMAS",
+    "lat":39.264201,
+    "lon":9.045504,
+    "full_name":"Stazione di CAGLIARI ELMAS"
+  },
+  "830012873":{
+    "name":"ABBASANTA",
+    "lat":40.12881,
+    "lon":8.817741,
+    "full_name":"Stazione di ABBASANTA"
+  },
+  "830012874":{
+    "name":"PAULILATINO",
+    "lat":40.077377,
+    "lon":8.775812,
+    "full_name":"Stazione di PAULILATINO"
+  },
+  "830012879":{
+    "name":"MARRUBIU-TERRALBA-ARBOREA",
+    "lat":39.75293,
+    "lon":8.641149,
+    "full_name":"Stazione di MARRUBIU-TERRALBA-ARBOREA"
+  },
+  "830012878":{
+    "name":"ORISTANO",
+    "lat":39.902038,
+    "lon":8.603982,
+    "full_name":"Stazione di ORISTANO"
+  },
+  "830012876":{
+    "name":"SOLARUSSA",
+    "lat":39.952526,
+    "lon":8.679818,
+    "full_name":"Stazione di SOLARUSSA"
+  },
+  "830012880":{
+    "name":"URAS MOGORO",
+    "lat":39.692633,
+    "lon":8.696463,
+    "full_name":"Stazione di URAS MOGORO"
+  },
+  "830012862":{
+    "name":"OZIERI CHILIVANI",
+    "lat":40.609504,
+    "lon":8.933753,
+    "full_name":"Stazione di OZIERI CHILIVANI"
+  },
+  "830012808":{
+    "name":"Assemini S. Lucia",
+    "lat":39.291031,
+    "lon":8.989286,
+    "full_name":"Stazione di Assemini S. Lucia"
+  },
+  "830012809":{
+    "name":"Assemini Carmine",
+    "lat":39.281795,
+    "lon":9.013726,
+    "full_name":"Stazione di Assemini Carmine"
+  },
+  "830012889":{
+    "name":"ASSEMINI",
+    "lat":39.287611,
+    "lon":8.997937,
+    "full_name":"Stazione di ASSEMINI"
+  },
+  "830012855":{
+    "name":"OLBIA",
+    "lat":40.924599,
+    "lon":9.498301,
+    "full_name":"Stazione di OLBIA"
+  },
+  "830012802":{
+    "name":"PORTO TORRES",
+    "lat":40.833049,
+    "lon":8.39642,
+    "full_name":"Stazione di PORTO TORRES"
+  },
+  "830012882":{
+    "name":"S.GAVINO (SAN GAVINO MONREALE)",
+    "lat":39.546212,
+    "lon":8.788027,
+    "full_name":"Stazione di S.GAVINO (SAN GAVINO MONREALE)"
+  },
+  "830012854":{
+    "name":"MARINELLA (GOLFO ARANCI)",
+    "lat":40.999137,
+    "lon":9.55362,
+    "full_name":"Stazione di MARINELLA (GOLFO ARANCI)"
+  }
+}

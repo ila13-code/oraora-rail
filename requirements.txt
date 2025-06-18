@@ -1,0 +1,3 @@
+# requirements.txt – dipendenze Python per preprocess_gtfs.py
+pandas>=2.2
+# pandas porta già con sé numpy, python-dateutil e pytz come dipendenze, quindi non serve elencarle esplicitamente.
