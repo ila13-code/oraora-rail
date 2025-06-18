@@ -21,7 +21,6 @@ const MapManager = {
 
         L.control.zoom({ position: 'bottomleft' }).addTo(this.map);
 
-        /* tiles CARTO light */
         L.tileLayer(
             'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png',
             { attribution:'© OpenStreetMap / CARTO | OraOra Rail', maxZoom:18 }
