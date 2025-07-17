@@ -78,7 +78,7 @@ oraora-rail/
     └── stats.json
 ```
 
-## 🎯 Come usare OraOra Rail
+## Come usare OraOra Rail
 
 ### Interfaccia principale
 
