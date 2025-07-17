@@ -5,36 +5,102 @@ Visualizza le tratte e gli orari dei **treni regionali Trenitalia in Sardegna**.
 Il progetto è stato sviluppato per il corso di Automated Planning A.A. 2024/2025.
 
 ---
+## Come avviare OraOra Rail
 
-## Contenuto del repo
+### Prerequisiti
 
-| Cartella / File | Descrizione                                                                                |
-| --------------- | ------------------------------------------------------------------------------------------ |
-| `resources/`          | File TXT GTFS originali (feed Trenitalia)                                            |
-| `preprocess.py` | Script di pre‑processing: converte i TXT in una serie di JSON ottimizzati per il front‑end |
-| `out/`          | JSON generati (routes, stops, trips, shapes, calendar…)                                    |
-| `modules/`      | Front‑end modulare (Leaflet + vis‑timeline)                                                |
-| `index.html`    | Entry‑point single‑page con mappa, timeline e dashboard                                    |
-| `styles.css`    | Stili per la UI                                                                            |
+- **Python 3.7+** (per il preprocessing dei dati GTFS)
+- **Server web** (Python, Node.js, o qualsiasi server HTTP)
+- **Browser moderno** (Chrome, Firefox, Safari, Edge)
+- **Connessione internet** (per le mappe e le librerie CDN)
 
----
-
-## Setup rapido
+### 1. Preparazione
 
 ```bash
-# 1. Clona il progetto
-$ git clone <repo-url>
-$ cd oraora-rail
-
-# 2. (Opzionale) Crea un venv
-$ python -m venv venv && source venv/bin/activate
-
-# 3. Installa dipendenze
-$ pip install -r requirements.txt
-
-# 4. Genera i JSON a partire dai feed GTFS
-$ python preprocess.py resources out
-
-# 5. Avvia un server statico (ad esempio)
-$ python -m http.server 8000
+# Installa le dipendenze Python
+pip install -r requirements.txt
 ```
+
+### 2. Processa i dati GTFS
+
+Scarica i dati GTFS e processali:
+
+```bash
+python preprocess_gtfs.py /path/to/gtfs/files ./out
+```
+
+Questo genererà i file JSON necessari nella cartella `out/`.
+
+### 3. Avvia il server web
+
+**Opzione A: Python (raccomandato)**
+```bash
+python -m http.server 8080
+```
+
+**Opzione B: Node.js**
+```bash
+npm install -g http-server
+http-server -p 8080
+```
+
+**Opzione C: Live Server (VS Code)**
+- Installa l'estensione "Live Server"
+- Clicca destro su `index.html` → "Open with Live Server"
+
+### 4. Apri l'applicazione
+
+Vai su **http://localhost:8080** nel tuo browser.
+
+## 📁 Struttura del progetto
+
+```
+oraora-rail/
+├── 📄 index.html              # Pagina principale
+├── 🎨 styles.css              # Stili CSS
+├── ⚙️ app.js                  # Logica principale
+├── 🖼️ favicon.ico             # Icona dell'app
+├── 📦 requirements.txt        # Dipendenze Python
+├── 🐍 preprocess_gtfs.py      # Script di preprocessing
+├── 📚 modules/                # Moduli JavaScript
+│   ├── utils.js               # Utilità generali
+│   ├── data.js                # Gestione dati
+│   ├── map.js                 # Gestione mappa
+│   ├── timeline.js            # Timeline degli orari
+│   ├── animation.js           # Animazioni treni
+│   └── ui.js                  # Interfaccia utente
+└── 📊 out/                    # Dati processati (generati)
+    ├── routes.json
+    ├── shapes.json
+    ├── stops.json
+    ├── timetable.json
+    ├── calendar.json
+    └── stats.json
+```
+
+## Come usare OraOra Rail
+
+### Interfaccia principale
+
+1. **Seleziona una linea** dal menu a tendina "Linea"
+2. **Scegli l'origine** dalla lista delle stazioni di partenza
+3. **Seleziona la destinazione** tra le stazioni disponibili
+4. **Imposta la data** di viaggio
+5. **Scegli l'orario** di partenza desiderato
+6. **Clicca "Simula"** per avviare l'animazione
+
+### Controlli animazione
+
+- **Velocità**: Regola la velocità dell'animazione (1x - 10x)
+- **Pausa/Play**: Ferma o riprendi l'animazione
+- **Reset**: Torna alla configurazione iniziale
+
+### Dashboard informativo
+
+Il pannello di stato mostra:
+- Informazioni sulla linea selezionata
+- Stazioni di partenza e destinazione
+- Orari di partenza e arrivo
+- Durata del viaggio
+- Numero di fermate
+- Stato dell'animazione
