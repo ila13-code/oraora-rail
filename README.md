@@ -1,13 +1,15 @@
-# OraOra Rail – Train Timetable Visualizer
+# OraOra Rail – Train Timetable Visualizer
 
 Visualizza le tratte e gli orari dei **treni regionali Trenitalia in Sardegna**.
 
 Il progetto è stato sviluppato per il corso di Automated Planning A.A. 2024/2025.
 
-N.B. All'interno del repository è presente una descrizione dettagliata del progetto (**oraora_rail_train_timetable_visaulizer_ENG.pdf** - **oraora_rail_train_timetable_visaulizer_ITA.pdf**)
+**N.B.** All'interno del repository è presente una descrizione dettagliata del progetto (**oraora_rail_train_timetable_visaulizer_ENG.pdf** - **oraora_rail_train_timetable_visaulizer_ITA.pdf**)
 
-slide del progetto: https://www.canva.com/design/DAGtcUNXruU/0y71xm8zI6AQPR09hPrg4g/edit?utm_content=DAGtcUNXruU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+Slide del progetto: https://www.canva.com/design/DAGtcUNXruU/0y71xm8zI6AQPR09hPrg4g/edit?utm_content=DAGtcUNXruU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
+
 ---
+
 ## Come avviare OraOra Rail
 
 ### Prerequisiti
@@ -37,17 +39,20 @@ Questo genererà i file JSON necessari nella cartella `out/`.
 ### 3. Avvia il server web
 
 **Opzione A: Python (raccomandato)**
+
 ```bash
 python -m http.server 8080
 ```
 
 **Opzione B: Node.js**
+
 ```bash
 npm install -g http-server
 http-server -p 8080
 ```
 
 **Opzione C: Live Server (VS Code)**
+
 - Installa l'estensione "Live Server"
 - Clicca destro su `index.html` → "Open with Live Server"
 
@@ -101,6 +106,7 @@ oraora-rail/
 ### Dashboard informativo
 
 Il pannello di stato mostra:
+
 - Informazioni sulla linea selezionata
 - Stazioni di partenza e destinazione
 - Orari di partenza e arrivo
