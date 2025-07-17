@@ -4,6 +4,8 @@ Visualizza le tratte e gli orari dei **treni regionali Trenitalia in Sardegna**.
 
 Il progetto è stato sviluppato per il corso di Automated Planning A.A. 2024/2025.
 
+N.B. All'interno del repository è presente una descrizione dettagliata del progetto (**oraora_rail_train_timetable_visaulizer_ENG.pdf** - **oraora_rail_train_timetable_visaulizer_ITA.pdf**)
+
 ---
 ## Come avviare OraOra Rail
 
