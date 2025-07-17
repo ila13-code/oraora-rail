@@ -64,13 +64,13 @@ def main():
     try:
         in_dir, out_dir = map(Path, sys.argv[1:3])
     except ValueError:
-        sys.exit("❌ Usage: python preprocess_gtfs.py <in_dir> <out_dir>")
+        sys.exit("Usage: python preprocess_gtfs.py <in_dir> <out_dir>")
 
-    print(f"🚀 Avvio preprocessing GTFS da {in_dir} verso {out_dir}")
+    print(f"Avvio preprocessing GTFS da {in_dir} verso {out_dir}")
     out_dir.mkdir(parents=True, exist_ok=True)
 
     # Carica file GTFS
-    print("📂 Caricamento file GTFS...")
+    print("Caricamento file GTFS...")
     
     try:
         routes_df = safe_read_csv(in_dir / 'routes.txt')
@@ -81,13 +81,13 @@ def main():
         calendar_dates_df = safe_read_csv(in_dir / 'calendar_dates.txt')
         
     except FileNotFoundError as e:
-        print(f"❌ File mancante: {e}")
+        print(f"File mancante: {e}")
         return
     except Exception as e:
-        print(f"❌ Errore caricamento: {e}")
+        print(f"Errore caricamento: {e}")
         return
 
-    print(f"📊 File caricati:")
+    print(f"File caricati:")
     print(f"   - routes: {len(routes_df)} righe")
     print(f"   - trips: {len(trips_df)} righe") 
     print(f"   - stops: {len(stops_df)} righe")
@@ -100,10 +100,10 @@ def main():
     train_routes = routes_df[routes_df['route_type'] == 2].copy()
     
     if train_routes.empty:
-        print("❌ Nessuna linea ferroviaria trovata!")
+        print("Nessuna linea ferroviaria trovata!")
         return
     
-    print(f"🚂 Trovate {len(train_routes)} linee ferroviarie:")
+    print(f"Trovate {len(train_routes)} linee ferroviarie:")
     for _, route in train_routes.iterrows():
         print(f"   - {route['route_short_name']}: {route['route_long_name']}")
     
@@ -166,7 +166,7 @@ def main():
         }
 
     # 4. PROCESSA TIMETABLE CON CALENDARIO
-    print("⏰ Processando timetable...")
+    print("Processando timetable...")
     timetable_json = {}
     
     # Crea dizionario calendar per lookup veloce
@@ -250,10 +250,10 @@ def main():
         
         trip_count += 1
 
-    print(f"✅ Processati {trip_count} viaggi")
+    print(f"Processati {trip_count} viaggi")
 
     # 5. PROCESSA CALENDAR DATES
-    print("📅 Processando calendar dates...")
+    print("Processando calendar dates...")
     calendar_json = {}
     for _, cal_date in calendar_dates_df.iterrows():
         service_id = str(cal_date['service_id'])
@@ -266,7 +266,7 @@ def main():
         calendar_json[service_id][date] = exception_type
 
     # 6. CREA STATISTICHE DETTAGLIATE
-    print("📈 Generando statistiche...")
+    print("Generando statistiche...")
     
     # Analisi per destinazioni
     destinations = {}
@@ -307,8 +307,8 @@ def main():
     save_json(calendar_json, 'calendar.json')
     save_json(stats_json, 'stats.json')
 
-    print("✅ Preprocessing completato con successo!")
-    print(f"📁 File generati in: {out_dir}")
+    print("Preprocessing completato con successo!")
+    print(f"File generati in: {out_dir}")
     print(f"   - routes.json ({len(routes_json)} linee)")
     print(f"   - shapes.json ({len(shapes_json)} percorsi)")
     print(f"   - stops.json ({len(stops_json)} stazioni)")
@@ -317,15 +317,15 @@ def main():
     print(f"   - stats.json (statistiche complete)")
     
     # Mostra statistiche interessanti per debug
-    print("\n📊 Statistiche dettagliate:")
+    print("\nStatistiche dettagliate:")
     for route_id, route_data in routes_json.items():
         route_stats = stats_json['routes_summary'][route_id]
-        print(f"\n🚂 {route_data['short']} - {route_data['long']}:")
+        print(f"\n{route_data['short']} - {route_data['long']}:")
         print(f"   - {route_stats['trip_count']} viaggi totali")
         print(f"   - {route_stats['stops_served']} stazioni servite")
         print(f"   - Destinazioni: {', '.join(route_stats['destinations'])}")
     
-    print(f"\n🎯 Destinazioni principali:")
+    print(f"\nDestinazioni principali:")
     for dest, count in sorted(destinations.items(), key=lambda x: x[1], reverse=True)[:10]:
         print(f"   - {dest}: {count} viaggi")
 

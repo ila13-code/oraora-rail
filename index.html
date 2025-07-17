@@ -5,19 +5,15 @@
     <title>OraOra Rail – Train Timetable Visualizer</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
-    <!-- Favicon -->
     <link rel="icon" href="favicon.ico">
 
-    <!-- Vendor CSS -->
     <link href="https://unpkg.com/leaflet/dist/leaflet.css" rel="stylesheet">
     <link href="https://unpkg.com/vis-timeline@latest/styles/vis-timeline-graph2d.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- App CSS -->
     <link href="styles.css" rel="stylesheet">
 </head>
 <body>
-    <!-- Loading Splash -->
     <div class="loading" id="loading">
         <div class="loading-icon">
             <img src="favicon.ico" width="80" height="80" alt="OraOra Rail">
@@ -26,7 +22,6 @@
         <div class="loading-subtitle">Caricamento dati...</div>
     </div>
 
-    <!-- Header -->
     <header class="header">
         <div class="logo">
             <div class="logo-icon">
@@ -83,13 +78,10 @@
         </div>
     </header>
 
-    <!-- Main Container -->
     <div class="main-container">
-        <!-- Map -->
         <div class="map-container">
             <div id="map"></div>
 
-            <!-- Status Panel -->
             <div class="status-panel" id="statusPanel">
                 <div class="status-title">
                     <img src="favicon.ico" width="20" height="20" style="margin-right:8px" alt="OraOra Rail icon">Dashboard
@@ -150,11 +142,8 @@
         </div>
     </div>
 
-    <!-- Vendor JS -->
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
-
-    <!-- App JS -->
     <script src="modules/utils.js"></script>
     <script src="modules/data.js"></script>
     <script src="modules/map.js"></script>

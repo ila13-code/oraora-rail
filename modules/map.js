@@ -31,7 +31,7 @@ const MapManager = {
         this.stationLayer = L.featureGroup().addTo(this.map);  // sopra
         this.trainLayer   = L.featureGroup().addTo(this.map);  // top
 
-        // Manteniamo l’ordine corretto (route → stazioni → treno)
+        // (route → stazioni → treno)
         this.routeLayer.bringToBack();
         Utils.log('Mappa pronta');
     },
@@ -64,8 +64,6 @@ const MapManager = {
             const rawShape = DataManager.getShape(shapeId);
             if (!rawShape || rawShape.length === 0) return;
 
-            /*  GTFS ⇒ [lat, lon]  – assicuriamoci che sia nel formato
-                accettato da Leaflet e convertiamo le stringhe in numeri */
             const latlngs = rawShape.map(pt =>
                 Array.isArray(pt)
                     ? [ +pt[0], +pt[1] ]                       // [lat, lon]
@@ -96,16 +94,13 @@ const MapManager = {
             this.stationLayer.addLayer(marker);
         });
 
-        /* === 3) ADATTA LA VISTA ===================================== */
+
         if (this.routeLayer.getLayers().length || this.stationLayer.getLayers().length) {
             const g = L.featureGroup([ this.routeLayer, this.stationLayer ]);
             this.map.fitBounds(g.getBounds().pad(0.12));
         }
     },
 
-    /* ------------------------------------------------------------------
-     *  MARKER STAZIONI (come prima, inalterato)
-     * ----------------------------------------------------------------*/
     createStationMarker (stop, stopId, route, originId, destinationId) {
         const style = {
             radius     : 6,
@@ -135,13 +130,9 @@ const MapManager = {
         return m;
     },
 
-    /* ------------------------------------------------------------------
-     *  POPUP helper (immutati)
-     * ----------------------------------------------------------------*/
     createRoutePopup (route, shapeId, points) { /* … */ },
     createStationPopup (stop, type)           { /* … */ },
 
-    /* ------------------------------------------------------------------*/
     addTrainMarker (pos) {
         this.trainLayer.clearLayers();
         return L.marker(pos, { icon: Utils.createTrainIcon(), zIndexOffset: 1000 })
