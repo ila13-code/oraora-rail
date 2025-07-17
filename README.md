@@ -6,6 +6,7 @@ Il progetto è stato sviluppato per il corso di Automated Planning A.A. 2024/202
 
 N.B. All'interno del repository è presente una descrizione dettagliata del progetto (**oraora_rail_train_timetable_visaulizer_ENG.pdf** - **oraora_rail_train_timetable_visaulizer_ITA.pdf**)
 
+slide del progetto: https://www.canva.com/design/DAGtcUNXruU/0y71xm8zI6AQPR09hPrg4g/edit?utm_content=DAGtcUNXruU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 ---
 ## Come avviare OraOra Rail
 
