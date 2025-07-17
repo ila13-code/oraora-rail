@@ -31,7 +31,7 @@ pip install -r requirements.txt
 Scarica i dati GTFS e processali:
 
 ```bash
-python preprocess_gtfs.py /path/to/gtfs/files ./out
+python preprocess_gtfs.py ./resources ./out
 ```
 
 Questo genererà i file JSON necessari nella cartella `out/`.
