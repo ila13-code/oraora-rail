@@ -10,106 +10,121 @@ Slide del progetto: https://www.canva.com/design/DAGtcUNXruU/0y71xm8zI6AQPR09hPr
 
 ---
 
-## Come avviare OraOra Rail
-
-### Prerequisiti
-
-- **Python 3.7+** (per il preprocessing dei dati GTFS)
-- **Server web** (Python, Node.js, o qualsiasi server HTTP)
-- **Browser moderno** (Chrome, Firefox, Safari, Edge)
-- **Connessione internet** (per le mappe e le librerie CDN)
-
-### 1. Preparazione
-
-```bash
-# Installa le dipendenze Python
-pip install -r requirements.txt
-```
-
-### 2. Processa i dati GTFS
-
-Scarica i dati GTFS e processali:
-
-```bash
-python preprocess_gtfs.py ./resources ./out
-```
-
-Questo genererà i file JSON necessari nella cartella `out/`.
-
-### 3. Avvia il server web
-
-**Opzione A: Python (raccomandato)**
-
-```bash
-python -m http.server 8080
-```
-
-**Opzione B: Node.js**
-
-```bash
-npm install -g http-server
-http-server -p 8080
-```
-
-**Opzione C: Live Server (VS Code)**
-
-- Installa l'estensione "Live Server"
-- Clicca destro su `index.html` → "Open with Live Server"
-
-### 4. Apri l'applicazione
-
-Vai su **http://localhost:8080** nel tuo browser.
-
-## 📁 Struttura del progetto
+## Architettura del Repository
 
 ```
 oraora-rail/
-├── 📄 index.html              # Pagina principale
-├── 🎨 styles.css              # Stili CSS
-├── ⚙️ app.js                  # Logica principale
-├── 🖼️ favicon.ico             # Icona dell'app
-├── 📦 requirements.txt        # Dipendenze Python
-├── 🐍 preprocess_gtfs.py      # Script di preprocessing
-├── 📚 modules/                # Moduli JavaScript
-│   ├── utils.js               # Utilità generali
-│   ├── data.js                # Gestione dati
-│   ├── map.js                 # Gestione mappa
-│   ├── timeline.js            # Timeline degli orari
-│   ├── animation.js           # Animazioni treni
-│   └── ui.js                  # Interfaccia utente
-└── 📊 out/                    # Dati processati (generati)
-    ├── routes.json
-    ├── shapes.json
-    ├── stops.json
-    ├── timetable.json
-    ├── calendar.json
-    └── stats.json
+├── backend/                    # Backend Flask
+│   ├── app.py                 # Server principale e API
+│   ├── gtfs_preprocess.py     # Preprocessing dati GTFS
+│   ├── gtfs_repo.py          # Repository pattern per dati
+│   ├── planner.py            # Planning per viaggi con cambi
+│   ├── requirements.txt      # Dipendenze Python
+│   ├── resources/            # Dati GTFS input
+│   └── gtfs-out/            # Dati JSON processati
+├── frontend/                  # Frontend JavaScript
+│   ├── index.html           # Pagina principale
+│   ├── styles.css           # Styling moderno
+│   ├── app.js              # Applicazione principale
+│   └── modules/            # Moduli JavaScript
+│       ├── data.js         # Gestione dati
+│       ├── map.js          # Visualizzazione mappa
+│       ├── timeline.js     # Timeline viaggi
+│       ├── animation.js    # Animazioni treni
+│       ├── ui.js           # Gestione interfaccia
+│       ├── planning.js     # Pannello planning
+│       └── utils.js        # Utilities
+├── docker/                   # Configurazione Docker
+│   ├── Dockerfile
+│   ├── compose.yml
+│   └── .dockerignore
+└── report&slide/            # Documentazione progetto
 ```
 
-## Come usare OraOra Rail
+## 🧠 Algoritmi di Planning
 
-### Interfaccia principale
+### Algoritmi di Ricerca Ottimale
+Il sistema implementa algoritmi di planning per il routing nei trasporti pubblici con ottimizzazioni per:
 
-1. **Seleziona una linea** dal menu a tendina "Linea"
-2. **Scegli l'origine** dalla lista delle stazioni di partenza
-3. **Seleziona la destinazione** tra le stazioni disponibili
-4. **Imposta la data** di viaggio
-5. **Scegli l'orario** di partenza desiderato
-6. **Clicca "Simula"** per avviare l'animazione
+- **Earliest Arrival**: Ricerca del percorso con arrivo più rapido
+- **Minimum Transfers**: Ottimizzazione per minimizzare i cambi di mezzo
 
-### Controlli animazione
+### Preprocessing Intelligente
+- Conversione automatica da GTFS a formato ottimizzato per il web (JSON)
+- Gestione calendario e eccezioni di servizio
+- Filtering per tipo di trasporto (treni, autobus)
 
-- **Velocità**: Regola la velocità dell'animazione (1x - 10x)
-- **Pausa/Play**: Ferma o riprendi l'animazione
-- **Reset**: Torna alla configurazione iniziale
+## Come avviare il progetto
 
-### Dashboard informativo
+### Opzione 1: Docker 
 
-Il pannello di stato mostra:
+```bash
+# 1. Avvia con Docker
+cd docker/
+docker compose up -d
 
-- Informazioni sulla linea selezionata
-- Stazioni di partenza e destinazione
-- Orari di partenza e arrivo
-- Durata del viaggio
-- Numero di fermate
-- Stato dell'animazione
+# 2. Apri il browser
+# http://localhost:5000
+```
+
+### Opzione 2: Installazione Locale
+
+```bash
+# 1. Setup Backend
+cd backend/
+python -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+
+# 2. Avvia il server
+python app.py
+
+# 3. Apri il browser
+# http://localhost:5000
+```
+
+## Come Usare il progetto
+
+### 1. Visualizzazione Normale (linee dirette BUS - REG (treno))
+1. **Seleziona una linea** dal menu
+2. **Scegli stazione di partenza** e **destinazione**
+3. **Seleziona data** e **orario di partenza**
+4. **Clicca "Simula"** per vedere l'animazione del viaggio
+
+### 2. Planning Avanzato
+1. **Clicca "Planning"** per aprire il pannello
+2. **Imposta origine e destinazione** (qualsiasi stazione)
+3. **Scegli data e orario** di partenza
+4. **Seleziona ottimizzazione**: Tempo vs Numero cambi
+5. **Calcola piano** per vedere itinerari multi-modali
+6. **Simula tutto** o **singole tratte**
+
+### 3. Controlli Animazione
+- **Velocità**: Slider da 1x a 10x
+- **Progress**: Barra di avanzamento in tempo reale
+- **Stop**: Interrompi animazione in qualsiasi momento
+
+## Sviluppo
+
+### Struttura Moduli Frontend
+
+- **DataManager**: Caricamento e gestione dati GTFS
+- **MapManager**: Visualizzazione mappa con Leaflet
+- **TimelineManager**: Timeline viaggi con Vis.js
+- **AnimationManager**: Animazioni treni lungo percorsi
+- **UIManager**: Gestione interfaccia e stati
+- **PlanningManager**: Gestione planning 
+
+### Struttura del Backend
+
+- **GTFSRepository**: Repository per accesso dati
+- **MultiModalPlanner**: Algoritmi di ricerca e ottimizzazione
+- **Preprocessing**: Pipeline conversione GTFS → JSON
+
+Sviluppato interamente da **Ilaria** per il corso di Automated Planning.
+
+Un progetto che dimostra la potenza degli algoritmi di planning applicati a problemi reali di mobilità urbana!
+
+---
+
+**🚆 Happy Planning! 🚆**
