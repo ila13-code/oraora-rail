@@ -1,5 +1,4 @@
 const UIManager = {
-    // Current selections
     selectedRouteId: null,
     selectedOrigin: null,
     selectedDestination: null,
@@ -8,14 +7,13 @@ const UIManager = {
     selectedTrip: null,
     filteredTrips: [],
 
-    // Initialize UI controls
+
     init() {
         this.initRouteSelector();
         this.initEventListeners();
         Utils.log('UI inizializzata');
     },
 
-    // Initialize route selector
     initRouteSelector() {
         const routeSelect = document.getElementById('routeSelect');
         routeSelect.innerHTML = '<option value="">Seleziona una linea...</option>';
@@ -29,9 +27,7 @@ const UIManager = {
         });
     },
 
-    // Initialize event listeners
     initEventListeners() {
-        // Route selection
         document.getElementById('routeSelect').addEventListener('change', (e) => {
             if (e.target.value) {
                 this.selectRoute(e.target.value);
@@ -40,7 +36,7 @@ const UIManager = {
             }
         });
 
-        // Origin selection
+
         document.getElementById('originSelect').addEventListener('change', (e) => {
             if (e.target.value) {
                 this.selectOrigin(e.target.value);
@@ -49,7 +45,6 @@ const UIManager = {
             }
         });
 
-        // Destination selection
         document.getElementById('destinationSelect').addEventListener('change', (e) => {
             if (e.target.value) {
                 this.selectDestination(e.target.value);
@@ -58,7 +53,6 @@ const UIManager = {
             }
         });
 
-        // Date selection
         document.getElementById('dateSelect').addEventListener('change', (e) => {
             if (e.target.value) {
                 this.selectDate(e.target.value);
@@ -67,7 +61,6 @@ const UIManager = {
             }
         });
 
-        // Time selection
         document.getElementById('timeSelect').addEventListener('change', (e) => {
             if (e.target.value) {
                 this.selectTime(e.target.value);
@@ -78,88 +71,59 @@ const UIManager = {
             }
         });
 
-        // Play button
         document.getElementById('playButton').addEventListener('click', () => {
             if (this.selectedTrip) {
                 AnimationManager.animateTrip(this.selectedTrip);
             }
         });
 
-        // Reset button
         document.getElementById('resetButton').addEventListener('click', () => {
             this.resetAll();
         });
     },
 
-    // Select route
     selectRoute(routeId) {
         Utils.log('Selezione linea:', routeId);
         
         this.selectedRouteId = routeId;
         AnimationManager.stopAnimation();
         
-        // Reset all dependent selections
         this.resetFromOrigin();
-        
-        // Clear map
+
         MapManager.clearLayers();
-        
-        // Populate origins
         this.populateOrigins();
-        
-        // Update status
         this.updateStatusPanel();
     },
 
-    // Select origin
     selectOrigin(originId) {
         Utils.log('Selezione partenza:', originId);
         
         this.selectedOrigin = originId;
-        
-        // Reset all dependent selections
+
         this.resetFromDestination();
-        
-        // Populate destinations
         this.populateDestinations();
-        
-        // Update status
         this.updateStatusPanel();
     },
 
-    // Select destination
     selectDestination(destinationId) {
         Utils.log('Selezione destinazione:', destinationId);
         
         this.selectedDestination = destinationId;
-        
-        // Reset all dependent selections
         this.resetFromDate();
-        
-        // Populate dates
         this.populateDates();
-        
-        // Update status
         this.updateStatusPanel();
     },
 
-    // Select date
     selectDate(date) {
         Utils.log('Selezione data:', date);
         
         this.selectedDate = date;
-        
-        // Reset time selection
+
         this.resetFromTime();
-        
-        // Populate times
         this.populateTimes();
-        
-        // Update status
         this.updateStatusPanel();
     },
 
-    // Select time
     selectTime(tripId) {
         Utils.log('Selezione orario/viaggio:', tripId);
         
@@ -167,11 +131,10 @@ const UIManager = {
         const trip = DataManager.getTrip(tripId);
         if (trip) {
             this.selectedTime = trip.departure;
-            
-            // Update display
+
             MapManager.drawRouteAndStations(
                 this.selectedRouteId,
-                [trip],
+                this.filteredTrips, 
                 this.selectedOrigin,
                 this.selectedDestination
             );
@@ -183,7 +146,7 @@ const UIManager = {
         this.updatePlayButton();
     },
 
-    // Populate origins
+
     populateOrigins() {
         const originSelect = document.getElementById('originSelect');
         const origins = DataManager.getOriginsForRoute(this.selectedRouteId);
@@ -200,7 +163,6 @@ const UIManager = {
         Utils.log(`Trovate ${origins.length} stazioni di partenza`);
     },
 
-    // Populate destinations
     populateDestinations() {
         const destinationSelect = document.getElementById('destinationSelect');
         const destinations = DataManager.getDestinationsFromOrigin(
@@ -220,7 +182,6 @@ const UIManager = {
         Utils.log(`Trovate ${destinations.length} destinazioni`);
     },
 
-    // Populate dates
     populateDates() {
         const dateSelect = document.getElementById('dateSelect');
         const dates = DataManager.getAvailableDates(
@@ -247,7 +208,6 @@ const UIManager = {
         Utils.log(`Trovate ${dates.length} date disponibili`);
     },
 
-    // Populate times
     populateTimes() {
         const timeSelect = document.getElementById('timeSelect');
         const trips = DataManager.getTripsForCriteria(
@@ -274,8 +234,7 @@ const UIManager = {
         });
         
         timeSelect.disabled = false;
-        
-        // Update map and timeline with all trips
+
         MapManager.drawRouteAndStations(
             this.selectedRouteId,
             trips,
@@ -364,13 +323,12 @@ const UIManager = {
         this.updatePlayButton();
     },
 
-    // Update play button state
+
     updatePlayButton() {
         const playButton = document.getElementById('playButton');
         playButton.disabled = !this.selectedTrip;
     },
 
-    // Update status panel
     updateStatusPanel() {
         const route = this.selectedRouteId ? DataManager.getRoute(this.selectedRouteId) : null;
         const origin = this.selectedOrigin ? DataManager.getStop(this.selectedOrigin) : null;
@@ -384,8 +342,7 @@ const UIManager = {
         document.getElementById('currentTime').textContent = trip ? trip.departure : '-';
         document.getElementById('currentDuration').textContent = trip ? `${trip.duration_minutes} min` : '-';
         document.getElementById('currentStops').textContent = trip ? trip.stop_count : '-';
-        
-        // Update status
+
         let status = 'In Attesa';
         if (this.selectedTrip) {
             status = 'Pronto per Simulazione';
@@ -402,12 +359,10 @@ const UIManager = {
         document.getElementById('routeStatus').textContent = status;
     },
 
-    // Update status temporarily
     updateStatus(status) {
         document.getElementById('routeStatus').textContent = status;
     },
 
-    // Restore normal status
     restoreStatus() {
         this.updateStatusPanel();
     }

@@ -504,3 +504,59 @@ button:disabled {
         height: calc(100vh - 140px);
     }
 }
+
+/* Planner */
+.planner-panel {
+  position: fixed;
+  top: 80px;
+  right: 20px;
+  width: 380px;
+  max-height: calc(100vh - 120px);
+  overflow-y: auto;
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: 0.75rem;
+  box-shadow: var(--shadow-xl);
+  padding: 1rem;
+  z-index: 2000;
+}
+
+.planner-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: .75rem;
+}
+
+.planner-form .planner-row {
+  margin-bottom: .75rem;
+  display: flex;
+  flex-direction: column;
+  gap: .25rem;
+}
+
+.planner-summary {
+  padding: .5rem .75rem;
+  background: var(--bg-tertiary);
+  border-radius: .5rem;
+  margin: .75rem 0;
+  font-size: .875rem;
+}
+
+.planner-seg {
+  border: 1px solid var(--border-color);
+  padding: .5rem .75rem;
+  border-radius: .5rem;
+  margin: .5rem 0;
+  background: var(--bg-secondary);
+}
+
+.planner-seg-idx {
+  font-weight: 700;
+  margin-right: .5rem;
+}
+.planner-error {
+  color: var(--danger);
+  font-weight: 600;
+  margin-top: .5rem;
+}

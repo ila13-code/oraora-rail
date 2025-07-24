@@ -1,8 +1,6 @@
 const TimelineManager = {
-    // Timeline instance
     timeline: null,
-    
-    // Initialize timeline
+
     init() {
         Utils.log('Inizializzazione timeline...');
         
@@ -12,7 +10,7 @@ const TimelineManager = {
         const options = {
             stack: true,
             orientation: 'top',
-            zoomMin: 1000 * 60 * 5, // 5 minutes
+            zoomMin: 1000 * 60 * 5, // 5 minuti
             height: '120px',
             margin: { item: 4 },
             selectable: true,
@@ -24,7 +22,6 @@ const TimelineManager = {
 
         this.timeline = new vis.Timeline(container, items, options);
         
-        // Handle timeline selection
         this.timeline.on('select', (properties) => {
             if (properties.items.length > 0) {
                 const tripId = properties.items[0];
@@ -35,14 +32,12 @@ const TimelineManager = {
         Utils.log('Timeline inizializzata');
     },
 
-    // Clear timeline
     clear() {
         if (this.timeline) {
             this.timeline.setItems(new vis.DataSet([]));
         }
     },
 
-    // Update timeline with trips
     updateWithTrips(trips, date, originId, destinationId) {
         if (!this.timeline || trips.length === 0) return;
 
@@ -65,14 +60,13 @@ const TimelineManager = {
 
         this.timeline.setItems(new vis.DataSet(items));
 
-        // Focus on time range
         if (trips.length > 0) {
             const firstTrip = trips[0];
             const lastTrip = trips[trips.length - 1];
             
             const startTime = new Date(`${formattedDate}T${firstTrip.departure}`);
             const endTime = new Date(`${formattedDate}T${lastTrip.arrival}`);
-            const buffer = 60 * 60 * 1000; // 1 hour buffer
+            const buffer = 60 * 60 * 1000; // 1 ora di buffer
 
             this.timeline.setWindow(
                 new Date(startTime.getTime() - buffer),
@@ -81,7 +75,6 @@ const TimelineManager = {
         }
     },
 
-    // Update for single trip
     updateForSingleTrip(tripId, date) {
         const trip = DataManager.getTrip(tripId);
         if (!trip || !this.timeline) return;
@@ -103,21 +96,18 @@ const TimelineManager = {
 
         this.timeline.setItems(new vis.DataSet([item]));
 
-        // Focus on trip
         const startTime = new Date(`${formattedDate}T${trip.departure}`);
         const endTime = new Date(`${formattedDate}T${trip.arrival}`);
-        const buffer = 30 * 60 * 1000; // 30 minutes buffer
+        const buffer = 30 * 60 * 1000; // 30 minuti di buffer
 
         this.timeline.setWindow(
             new Date(startTime.getTime() - buffer),
             new Date(endTime.getTime() + buffer)
         );
 
-        // Select the item
         this.timeline.setSelection([tripId]);
     },
 
-    // Create trip tooltip
     createTripTooltip(trip, origin, destination) {
         return `Da: ${origin?.name || '-'}
 A: ${destination?.name || '-'}
@@ -126,8 +116,6 @@ Arrivo: ${trip.arrival}
 Durata: ${trip.duration_minutes} min
 Fermate: ${trip.stop_count}`;
     },
-
-    // Redraw timeline (for responsive)
     redraw() {
         if (this.timeline) {
             this.timeline.redraw();
