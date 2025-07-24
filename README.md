@@ -14,31 +14,30 @@ Slide del progetto: https://www.canva.com/design/DAGtcUNXruU/0y71xm8zI6AQPR09hPr
 
 ```
 oraora-rail/
-├── backend/                    # Backend Flask
+├── backend/                   # Backend Flask
 │   ├── app.py                 # Server principale e API
 │   ├── gtfs_preprocess.py     # Preprocessing dati GTFS
-│   ├── gtfs_repo.py          # Repository pattern per dati
-│   ├── planner.py            # Planning per viaggi con cambi
-│   ├── requirements.txt      # Dipendenze Python
-│   ├── resources/            # Dati GTFS input
-│   └── gtfs-out/            # Dati JSON processati
+│   ├── gtfs_repo.py           # Repository pattern per dati
+│   ├── planner.py             # Planning per viaggi con cambi
+│   ├── requirements.txt       # Dipendenze Python
+│   ├── resources/             # Dati GTFS input
+│   └── gtfs-out/              # Dati JSON processati
 ├── frontend/                  # Frontend JavaScript
-│   ├── index.html           # Pagina principale
-│   ├── styles.css           # Styling moderno
-│   ├── app.js              # Applicazione principale
-│   └── modules/            # Moduli JavaScript
-│       ├── data.js         # Gestione dati
-│       ├── map.js          # Visualizzazione mappa
-│       ├── timeline.js     # Timeline viaggi
-│       ├── animation.js    # Animazioni treni
-│       ├── ui.js           # Gestione interfaccia
-│       ├── planning.js     # Pannello planning
-│       └── utils.js        # Utilities
-├── docker/                   # Configurazione Docker
+│   ├── index.html             # Pagina principale
+│   ├── styles.css             # Styling moderno
+│   ├── app.js                 # Applicazione principale
+│   └── modules/               # Moduli JavaScript
+│       ├── data.js            # Gestione dati
+│       ├── map.js             # Visualizzazione mappa
+│       ├── timeline.js        # Timeline viaggi
+│       ├── animation.js       # Animazioni treni
+│       ├── ui.js              # Gestione interfaccia
+│       ├── planning.js        # Pannello planning
+│       └── utils.js           # Utilities
+├── docker/                    # Configurazione Docker
 │   ├── Dockerfile
 │   ├── compose.yml
-│   └── .dockerignore
-└── report&slide/            # Documentazione progetto
+└── report&slide/              # Report e Slide del progetto
 ```
 
 ## 🧠 Algoritmi di Planning
