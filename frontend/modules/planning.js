@@ -9,6 +9,7 @@ const PlanningManager = {
     this.btnOpen = document.getElementById('openPlanner');
     this.panel = document.getElementById('plannerPanel');
     this.closeBtn = document.getElementById('plannerClose');
+    this.timelineContainer = document.querySelector('.timeline-container'); // Aggiunto
 
     this.originSel = document.getElementById('plannerOrigin');
     this.destSel = document.getElementById('plannerDestination');
@@ -21,12 +22,30 @@ const PlanningManager = {
   },
 
   bindEvents() {
-    this.btnOpen?.addEventListener('click', () => this.panel.style.display = 'block');
+    this.btnOpen?.addEventListener('click', () => {
+      this.panel.style.display = 'block';
+      this.hideTimeline(); // Nascondi timeline quando apri planning
+    });
+    
     this.closeBtn?.addEventListener('click', () => {
       this.panel.style.display = 'none';
+      this.showTimeline(); // Mostra timeline quando chiudi planning
       MapManager.clearPlannerLayers?.();
     });
+    
     this.runBtn?.addEventListener('click', () => this.run());
+  },
+
+  hideTimeline() {
+    if (this.timelineContainer) {
+      this.timelineContainer.style.display = 'none';
+    }
+  },
+
+  showTimeline() {
+    if (this.timelineContainer) {
+      this.timelineContainer.style.display = 'block';
+    }
   },
 
   fillStops() {
@@ -116,7 +135,6 @@ const PlanningManager = {
         <strong>Tempo totale:</strong> ${total} min &nbsp;&nbsp; 
         <strong>Cambi (veicolo):</strong> ${transfers} &nbsp;&nbsp;
         <strong>Segmenti:</strong> ${segmentsCount} &nbsp;&nbsp;
-        <span class="planner-solver">Solver: ${plan.solver}</span>
         <div style="margin-top:8px;">
           <button id="plannerSimAll" class="btn-primary">▶️ Simula tutto</button>
         </div>
