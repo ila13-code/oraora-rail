@@ -1,5 +1,4 @@
 :root {
-   
     --brand-primary: #47B8FF;
     --brand-primary-dark: #2196F3;
     --brand-primary-light: #6FC7FF;
@@ -14,13 +13,11 @@
     
     --border-color: #E2E8F0;
     --border-color-dark: #CBD5E0;
-    
 
     --success: #48BB78;
     --success-light: #68D391;
     --warning: #ED8936;
     --danger: #F56565;
-    
 
     --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
     --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
@@ -74,7 +71,7 @@ body {
 
 .controls {
     display: flex;
-    align-items: center;
+    align-items: flex-end; /* Allinea tutto in basso */
     gap: 1rem;
     flex-wrap: wrap;
 }
@@ -92,9 +89,21 @@ body {
     color: var(--text-secondary);
     text-transform: uppercase;
     letter-spacing: 0.025em;
+    height: 1rem; /* Altezza fissa per le label */
+    line-height: 1rem;
 }
 
-select, input {
+/* Gruppo speciale per i pulsanti - senza label ma con spacing equivalente */
+.button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    padding-top: 1.25rem; /* Spazio equivalente alla label + gap */
+}
+
+/* Assicurati che select e button abbiano la stessa altezza */
+select, input, button {
+    height: 2.5rem; /* Altezza fissa per tutti i controlli */
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--border-color);
     border-radius: 0.5rem;
@@ -103,7 +112,7 @@ select, input {
     font-size: 0.875rem;
     font-weight: 500;
     transition: all 0.2s ease;
-    width: 100%;
+    box-sizing: border-box;
 }
 
 select:focus, input:focus {
@@ -119,23 +128,21 @@ select:disabled, input:disabled {
 }
 
 button {
-    padding: 0.625rem 1.25rem;
-    border: none;
-    border-radius: 0.5rem;
-    cursor: pointer;
-    font-weight: 600;
-    font-size: 0.875rem;
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 0.5rem;
-    transition: all 0.2s ease;
+    cursor: pointer;
+    font-weight: 600;
     white-space: nowrap;
+    border: none;
 }
 
 .btn-primary {
     background: var(--brand-primary);
     color: white;
     box-shadow: var(--shadow);
+    border-color: var(--brand-primary);
 }
 
 .btn-primary:hover:not(:disabled) {
@@ -471,6 +478,63 @@ button:disabled {
     margin-bottom: 1rem;
 }
 
+/* Planner */
+.planner-panel {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 380px;
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: 0.75rem;
+    box-shadow: var(--shadow-xl);
+    padding: 1rem;
+    z-index: 2000;
+}
+
+.planner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: .75rem;
+}
+
+.planner-form .planner-row {
+    margin-bottom: .75rem;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.planner-summary {
+    padding: .5rem .75rem;
+    background: var(--bg-tertiary);
+    border-radius: .5rem;
+    margin: .75rem 0;
+    font-size: .875rem;
+}
+
+.planner-seg {
+    border: 1px solid var(--border-color);
+    padding: .5rem .75rem;
+    border-radius: .5rem;
+    margin: .5rem 0;
+    background: var(--bg-secondary);
+}
+
+.planner-seg-idx {
+    font-weight: 700;
+    margin-right: .5rem;
+}
+
+.planner-error {
+    color: var(--danger);
+    font-weight: 600;
+    margin-top: .5rem;
+}
+
 /* Responsive */
 @media (max-width: 1200px) {
     .header {
@@ -483,10 +547,15 @@ button:disabled {
         gap: 0.5rem;
         width: 100%;
         justify-content: center;
+        align-items: flex-end; /* Mantieni l'allineamento anche su mobile */
     }
 
     .control-group {
         min-width: 120px;
+    }
+    
+    .button-group {
+        padding-top: 1.25rem; /* Mantieni lo spacing anche su mobile */
     }
     
     .status-panel {
@@ -503,60 +572,4 @@ button:disabled {
     .main-container {
         height: calc(100vh - 140px);
     }
-}
-
-/* Planner */
-.planner-panel {
-  position: fixed;
-  top: 80px;
-  right: 20px;
-  width: 380px;
-  max-height: calc(100vh - 120px);
-  overflow-y: auto;
-  background: var(--bg-primary);
-  border: 1px solid var(--border-color);
-  border-radius: 0.75rem;
-  box-shadow: var(--shadow-xl);
-  padding: 1rem;
-  z-index: 2000;
-}
-
-.planner-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: .75rem;
-}
-
-.planner-form .planner-row {
-  margin-bottom: .75rem;
-  display: flex;
-  flex-direction: column;
-  gap: .25rem;
-}
-
-.planner-summary {
-  padding: .5rem .75rem;
-  background: var(--bg-tertiary);
-  border-radius: .5rem;
-  margin: .75rem 0;
-  font-size: .875rem;
-}
-
-.planner-seg {
-  border: 1px solid var(--border-color);
-  padding: .5rem .75rem;
-  border-radius: .5rem;
-  margin: .5rem 0;
-  background: var(--bg-secondary);
-}
-
-.planner-seg-idx {
-  font-weight: 700;
-  margin-right: .5rem;
-}
-.planner-error {
-  color: var(--danger);
-  font-weight: 600;
-  margin-top: .5rem;
 }

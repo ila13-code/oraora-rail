@@ -66,16 +66,23 @@
                 </select>
             </div>
 
-            <button class="btn-primary" id="playButton" disabled>
-                <span>▶️</span>
-                <span>Simula</span>
-            </button>
+            <div class="button-group">
+                <button class="btn-primary" id="playButton" disabled>
+                    <span>▶️</span>
+                    <span>Simula</span>
+                </button>
+            </div>
 
-            <button class="btn-secondary" id="resetButton">
-                <span>🔄</span>
-                <span>Reset</span>
-            </button>
-            <button class="btn-secondary" id="openPlanner">Planning</button>
+            <div class="button-group">
+                <button class="btn-secondary" id="resetButton">
+                    <span>🔄</span>
+                    <span>Reset</span>
+                </button>
+            </div>
+            
+            <div class="button-group">
+                <button class="btn-secondary" id="openPlanner">Planning</button>
+            </div>
         </div>
     </header>
 
@@ -141,41 +148,43 @@
         <div class="timeline-container">
             <div id="timeline"></div>
         </div>
-    </div><div id="plannerPanel" class="planner-panel" style="display:none">
-  <div class="planner-header">
-    <h3>Planning</h3>
-    <button id="plannerClose" class="btn-secondary">✖</button>
-  </div>
+    </div>
 
-  <div class="planner-form">
-    <div class="planner-row">
-      <label>Partenza*</label>
-      <select id="plannerOrigin"></select>
-    </div>
-    <div class="planner-row">
-      <label>Arrivo*</label>
-      <select id="plannerDestination"></select>
-    </div>
-    <div class="planner-row">
-      <label>Data*</label>
-      <input type="date" id="plannerDate">
-    </div>
-    <div class="planner-row">
-      <label>Parti dopo (HH:MM:SS)</label>
-      <input type="text" id="plannerDepartAfter" value="00:00:00">
-    </div>
-    <div class="planner-row">
-      <label>Ottimizza per</label>
-      <select id="plannerOptimize">
-        <option value="time">Tempo</option>
-        <option value="transfers">Meno cambi</option>
-      </select>
-    </div>
-    <button class="btn-primary" id="plannerRun">Calcola piano</button>
-  </div>
+    <div id="plannerPanel" class="planner-panel" style="display:none">
+        <div class="planner-header">
+            <h3>Planning</h3>
+            <button id="plannerClose" class="btn-secondary">✖</button>
+        </div>
 
-  <div id="plannerResult" class="planner-result"></div>
-</div>
+        <div class="planner-form">
+            <div class="planner-row">
+                <label>Partenza*</label>
+                <select id="plannerOrigin"></select>
+            </div>
+            <div class="planner-row">
+                <label>Arrivo*</label>
+                <select id="plannerDestination"></select>
+            </div>
+            <div class="planner-row">
+                <label>Data*</label>
+                <input type="date" id="plannerDate">
+            </div>
+            <div class="planner-row">
+                <label>Parti dopo (HH:MM:SS)</label>
+                <input type="text" id="plannerDepartAfter" value="00:00:00">
+            </div>
+            <div class="planner-row">
+                <label>Ottimizza per</label>
+                <select id="plannerOptimize">
+                    <option value="time">Tempo</option>
+                    <option value="transfers">Meno cambi</option>
+                </select>
+            </div>
+            <button class="btn-primary" id="plannerRun">Calcola piano</button>
+        </div>
+
+        <div id="plannerResult" class="planner-result"></div>
+    </div>
 
     <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <script src="https://unpkg.com/vis-timeline@latest/standalone/umd/vis-timeline-graph2d.min.js"></script>
@@ -187,12 +196,11 @@
     <script src="modules/ui.js"></script>
     <script src="app.js"></script>
     <script src="modules/planning.js"></script>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-
-    setTimeout(() => PlanningManager.init(), 500);
-  });
-</script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => PlanningManager.init(), 500);
+        });
+    </script>
 
 </body>
 </html>
