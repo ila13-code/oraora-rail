@@ -40,7 +40,7 @@ oraora-rail/
 └── report&slide/              # Report e Slide del progetto
 ```
 
-## 🧠 Algoritmi di Planning
+## Algoritmi di Planning
 
 ### Algoritmi di Ricerca Ottimale
 Il sistema implementa algoritmi di planning per il routing nei trasporti pubblici con ottimizzazioni per:
