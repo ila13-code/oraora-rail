@@ -3,7 +3,7 @@ from pathlib import Path
 from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 
-from gtfs_preprocess import preprocess_gtfs
+from preprocess import preprocess_gtfs
 from gtfs_repo import GTFSRepository
 from planner import MultiModalPlanner
 
