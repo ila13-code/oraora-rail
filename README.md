@@ -4,7 +4,7 @@ Visualizza le tratte e gli orari dei **treni regionali Trenitalia in Sardegna**.
 
 Il progetto è stato sviluppato per il corso di Automated Planning A.A. 2024/2025.
 
-**N.B.** All'interno del repository è presente una descrizione dettagliata del progetto (**oraora_rail_train_timetable_visaulizer_ENG.pdf** - **oraora_rail_train_timetable_visaulizer_ITA.pdf**)
+**N.B.** All'interno del repository è presente una descrizione dettagliata del progetto (cartella report&slide).
 
 Slide del progetto: https://www.canva.com/design/DAGtcUNXruU/0y71xm8zI6AQPR09hPrg4g/edit?utm_content=DAGtcUNXruU&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton
 
@@ -39,19 +39,6 @@ oraora-rail/
 │   ├── compose.yml
 └── report&slide/              # Report e Slide del progetto
 ```
-
-## Algoritmi di Planning
-
-### Algoritmi di Ricerca Ottimale
-Il sistema implementa algoritmi di planning per il routing nei trasporti pubblici con ottimizzazioni per:
-
-- **Earliest Arrival**: Ricerca del percorso con arrivo più rapido
-- **Minimum Transfers**: Ottimizzazione per minimizzare i cambi di mezzo
-
-### Preprocessing Intelligente
-- Conversione automatica da GTFS a formato ottimizzato per il web (JSON)
-- Gestione calendario e eccezioni di servizio
-- Filtering per tipo di trasporto (treni, autobus)
 
 ## Come avviare il progetto
 
@@ -90,7 +77,7 @@ python app.py
 3. **Seleziona data** e **orario di partenza**
 4. **Clicca "Simula"** per vedere l'animazione del viaggio
 
-### 2. Planning Avanzato
+### 2. Planning
 1. **Clicca "Planning"** per aprire il pannello
 2. **Imposta origine e destinazione** (qualsiasi stazione)
 3. **Scegli data e orario** di partenza
@@ -102,20 +89,3 @@ python app.py
 - **Velocità**: Slider da 1x a 10x
 - **Progress**: Barra di avanzamento in tempo reale
 - **Stop**: Interrompi animazione in qualsiasi momento
-
-## Sviluppo
-
-### Struttura Moduli Frontend
-
-- **DataManager**: Caricamento e gestione dati GTFS
-- **MapManager**: Visualizzazione mappa con Leaflet
-- **TimelineManager**: Timeline viaggi con Vis.js
-- **AnimationManager**: Animazioni treni lungo percorsi
-- **UIManager**: Gestione interfaccia e stati
-- **PlanningManager**: Gestione planning 
-
-### Struttura del Backend
-
-- **GTFSRepository**: Repository per accesso dati
-- **MultiModalPlanner**: Algoritmi di ricerca e ottimizzazione
-- **Preprocessing**: Pipeline conversione GTFS → JSON
